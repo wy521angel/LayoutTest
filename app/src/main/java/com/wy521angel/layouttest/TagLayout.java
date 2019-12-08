@@ -29,6 +29,10 @@ public class TagLayout extends ViewGroup {
             View child = getChildAt(i);
 
             MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+            int childLeftMargin = lp.leftMargin;
+            int childRightMargin = lp.rightMargin;
+            int childTopMargin = lp.topMargin;
+            int childBottomMargin = lp.bottomMargin;
 
             measureChildWithMargins(child, widthMeasureSpec, getPaddingLeft()
                     , heightMeasureSpec,
