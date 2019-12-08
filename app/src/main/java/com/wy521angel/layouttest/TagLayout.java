@@ -19,18 +19,22 @@ public class TagLayout extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        int widthUsed = getPaddingLeft() ;//最宽的那一行的宽度
+        int widthUsed = getPaddingLeft();//最宽的那一行的宽度
         int heightUsed = getPaddingTop();
-        int lineWidthUsed = getPaddingLeft() ;//当前行的宽度，如果换行，这个值要清空为0
+        int lineWidthUsed = getPaddingLeft();//当前行的宽度，如果换行，这个值要清空为初始值
         int lineMaxHeight = getPaddingTop();//一行中最高的高度
         int specMode = MeasureSpec.getMode(widthMeasureSpec);
         int specWidth = MeasureSpec.getSize(widthMeasureSpec);
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
+
+            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+
             measureChildWithMargins(child, widthMeasureSpec, getPaddingLeft()
                     , heightMeasureSpec,
                     heightUsed);
-            if (specMode != MeasureSpec.UNSPECIFIED && lineWidthUsed + child.getMeasuredWidth()+getPaddingRight() > specWidth) {//已用宽度加上子View的宽度超过了父布局整体宽度，换行
+
+            if (specMode != MeasureSpec.UNSPECIFIED && lineWidthUsed + child.getMeasuredWidth() + getPaddingRight() > specWidth) {//已用宽度加上子View的宽度超过了父布局整体宽度，换行
                 lineWidthUsed = getPaddingLeft();
                 heightUsed += lineMaxHeight;
                 lineMaxHeight = getPaddingTop();
