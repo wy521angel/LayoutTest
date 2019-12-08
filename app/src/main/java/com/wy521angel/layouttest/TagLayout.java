@@ -53,7 +53,7 @@ public class TagLayout extends ViewGroup {
         }
         int width = widthUsed;
         int height = lineMaxHeight + heightUsed;
-        setMeasuredDimension(width, height);
+        setMeasuredDimension(specWidth, height);
     }
 
     @Override
