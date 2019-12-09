@@ -79,6 +79,11 @@ public class TagLayout extends ViewGroup {
     public LayoutParams generateLayoutParams(AttributeSet attrs) {
         return new MarginLayoutParams(getContext(), attrs);
     }
+
+    @Override
+    public boolean shouldDelayChildPressedState() {
+        return false;
+    }
 }
 
 
